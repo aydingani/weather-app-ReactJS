@@ -14,6 +14,12 @@ function App() {
     setCity(e.target.value);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleGetWeather();
+    }
+  };
+
   const handleGetWeather = async () => {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
@@ -33,7 +39,11 @@ function App() {
 
   return (
     <div>
-      <input type="text" onChange={handleCityChange} />
+      <input
+        type="text"
+        onChange={handleCityChange}
+        onKeyDown={handleKeyDown}
+      />
       <button onClick={handleGetWeather}>Get Weather</button>
       {errorMessage && <p>{errorMessage}</p>}
       {weatherData && (
