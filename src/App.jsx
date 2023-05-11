@@ -1,24 +1,13 @@
 import { useState } from "react";
 import "./App.css";
+import SearchBar from "./SearchBar";
+import WeatherDisplay from "./WeatherDisplay";
 
 function App() {
   const API_KEY = "af907020cc1bc617fb6b8e500b74fef9";
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const options = { day: "numeric", month: "long", year: "numeric" };
-  const today = new Date().toLocaleDateString("en-US", options);
-
-  const handleCityChange = (e) => {
-    setCity(e.target.value);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleGetWeather();
-    }
-  };
 
   const handleGetWeather = async () => {
     const res = await fetch(
@@ -39,27 +28,9 @@ function App() {
 
   return (
     <div>
-      <input
-        type="text"
-        onChange={handleCityChange}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={handleGetWeather}>Get Weather</button>
+      <SearchBar onCityChange={setCity} onGetWeather={handleGetWeather} />
       {errorMessage && <p>{errorMessage}</p>}
-      {weatherData && (
-        <div>
-          <h1>
-            {weatherData.name}, {weatherData.sys.country}
-          </h1>
-          <h2>{today}</h2>
-          <p>
-            Temperature: {Math.round(weatherData.main.temp - 273.15)}°C /{" "}
-            {Math.round(((weatherData.main.temp - 273.15) * 9) / 5 + 32)}°F
-          </p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
-          <p>Wind: {weatherData.wind.speed}km/h</p>
-        </div>
-      )}
+      {weatherData && <WeatherDisplay weatherData={weatherData} />}
     </div>
   );
 }
