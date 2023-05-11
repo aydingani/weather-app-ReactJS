@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import WeatherDisplay from "./WeatherDisplay";
 
 function App() {
-  const API_KEY = "af907020cc1bc617fb6b8e500b74fef9";
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
