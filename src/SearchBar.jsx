@@ -1,3 +1,5 @@
+import React from "react";
+
 const SearchBar = ({ onCityChange, onGetWeather }) => {
   const handleCityChange = (e) => {
     onCityChange(e.target.value);

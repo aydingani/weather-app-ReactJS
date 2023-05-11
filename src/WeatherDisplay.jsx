@@ -1,3 +1,5 @@
+import React from "react";
+
 const WeatherDisplay = ({ weatherData }) => {
   const options = { day: "numeric", month: "long", year: "numeric" };
   const today = new Date().toLocaleDateString("en-US", options);
