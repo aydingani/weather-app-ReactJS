@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { useState } from "react";
 import "./App.css";
 import SearchBar from "./SearchBar";
 import WeatherDisplay from "./WeatherDisplay";
