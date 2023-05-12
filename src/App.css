@@ -18,7 +18,8 @@ body {
 }
 
 .message {
-  font-weight: 900;
+  font-weight: 700;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .everything {
