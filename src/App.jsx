@@ -10,6 +10,12 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleGetWeather = async () => {
+    if (!city) {
+      setWeatherData(null);
+      setErrorMessage("Please enter a city name");
+      return;
+    }
+
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
     );
@@ -26,11 +32,26 @@ function App() {
     }
   };
 
+  const getWeatherEmoji = (temperature) => {
+    if (temperature < 5) {
+      return "❄️"; //too cold
+    } else if (temperature >= 5 && temperature < 20) {
+      return "⛅️"; //partially cloudy
+    } else {
+      return "☀️";
+    }
+  };
+
   return (
-    <div>
+    <div className="everything">
       <SearchBar onCityChange={setCity} onGetWeather={handleGetWeather} />
       {errorMessage && <p>{errorMessage}</p>}
-      {weatherData && <WeatherDisplay weatherData={weatherData} />}
+      {weatherData && (
+        <WeatherDisplay
+          weatherData={weatherData}
+          getWeatherEmoji={getWeatherEmoji}
+        />
+      )}
     </div>
   );
 }

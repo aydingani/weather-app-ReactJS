@@ -10,13 +10,17 @@ const SearchBar = ({ onCityChange, onGetWeather }) => {
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <input
         type="text"
+        className="city-input"
         onChange={handleCityChange}
         onKeyDown={handleKeyDown}
+        placeholder="Search City"
       />
-      <button onClick={onGetWeather}>Get Weather</button>
+      <button className="get-weather-btn" onClick={onGetWeather}>
+        Get Weather
+      </button>
     </div>
   );
 };
