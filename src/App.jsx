@@ -43,16 +43,23 @@ function App() {
   };
 
   return (
-    <div className="everything">
-      <SearchBar onCityChange={setCity} onGetWeather={handleGetWeather} />
-      {errorMessage && <p>{errorMessage}</p>}
-      {weatherData && (
-        <WeatherDisplay
-          weatherData={weatherData}
-          getWeatherEmoji={getWeatherEmoji}
-        />
-      )}
-    </div>
+    <>
+      <div className="welcome-message">
+        <p className="message">
+          Welcome to WeatherWiz, where coding meets climate! 🌦️
+        </p>
+      </div>
+      <div className="everything">
+        <SearchBar onCityChange={setCity} onGetWeather={handleGetWeather} />
+        {errorMessage && <p>{errorMessage}</p>}
+        {weatherData && (
+          <WeatherDisplay
+            weatherData={weatherData}
+            getWeatherEmoji={getWeatherEmoji}
+          />
+        )}
+      </div>
+    </>
   );
 }
 
