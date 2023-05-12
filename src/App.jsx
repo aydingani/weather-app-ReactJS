@@ -44,12 +44,11 @@ function App() {
 
   return (
     <>
-      <div className="welcome-message">
+      <div className="welcome-message"></div>
+      <div className="everything">
         <p className="message">
           Welcome to WeatherWiz, where coding meets climate! 🌦️
         </p>
-      </div>
-      <div className="everything">
         <SearchBar onCityChange={setCity} onGetWeather={handleGetWeather} />
         {errorMessage && <p>{errorMessage}</p>}
         {weatherData && (
