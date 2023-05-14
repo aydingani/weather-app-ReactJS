@@ -1,2 +1,1 @@
-# weather-app-ReactJS
- Weather App with React JS
+Check out the demo version -> https://weather-wiz-gani.vercel.app/
